@@ -1,4 +1,4 @@
-package nl.tue.s2id90.groupNN;
+package nl.tue.s2id90.group48;
 
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Integer.MIN_VALUE;
@@ -124,9 +124,11 @@ public class FrEmPlayer  extends DraughtsPlayer{
         for (Move move : moves) {
             state.doMove(move);
             System.out.println("BETA: " + beta);
+            
             // recursive call
             // TODO clean up getting the minimal of the four
-            
+            beta = evaluate(state);
+            System.out.println("New beta: " + beta);
             beta = min(beta, min(alphaBetaMax(node, alpha, beta, depth), min(alpha, beta))); 
             
             if (beta <= alpha) {
@@ -154,6 +156,9 @@ public class FrEmPlayer  extends DraughtsPlayer{
             System.out.println("ALPHA: " + alpha);
             // recursive call
             // TODO clean up getting the maximal of the four
+            // use temp values for alpha???
+            alpha = evaluate(state);
+            System.out.println("New alpha: " + beta);
             alpha = max(alpha, max(alphaBetaMin(node, alpha, beta, depth), max(alpha, beta)));
             
             if (alpha >= beta) {
@@ -173,7 +178,7 @@ public class FrEmPlayer  extends DraughtsPlayer{
     // ToDo: write an appropriate evaluation function
     int evaluate(DraughtsState state) { 
         int[] pieces = state.getPieces();
-        int value = pieces[1]-pieces[2]+pieces[3]-pieces[4];
+        int value = pieces[1]-pieces[2]+2*pieces[3]-2*pieces[4];
         return value;
     }
 }
