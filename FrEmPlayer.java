@@ -137,7 +137,7 @@ public class FrEmPlayer  extends DraughtsPlayer{
         }
         
         Move bestMove = state.getMoves().get(0); // incomplete, needs evaluation
-        int value = 0;
+        int value = evaluate(state);
         node.setBestMove(bestMove);
         return value;   // value of alpha
      }
@@ -164,7 +164,7 @@ public class FrEmPlayer  extends DraughtsPlayer{
         }
         
         Move bestMove = state.getMoves().get(0);
-        int value = 0;
+        int value = evaluate(state);
         node.setBestMove(bestMove);
         return value;
     }
@@ -172,6 +172,8 @@ public class FrEmPlayer  extends DraughtsPlayer{
     /** A method that evaluates the given state. */
     // ToDo: write an appropriate evaluation function
     int evaluate(DraughtsState state) { 
-        return 0;
+        int[] pieces = state.getPieces();
+        int value = pieces[1]-pieces[2]+pieces[3]-pieces[4];
+        return value;
     }
 }
