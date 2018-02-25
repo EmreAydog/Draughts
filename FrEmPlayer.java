@@ -173,12 +173,5 @@ public class FrEmPlayer  extends DraughtsPlayer{
         node.setBestMove(bestMove);
         return value;
     }
-
-    /** A method that evaluates the given state. */
-    // ToDo: write an appropriate evaluation function
-    int evaluate(DraughtsState state) { 
-        int[] pieces = state.getPieces();
-        int value = pieces[1]-pieces[2]+2*pieces[3]-2*pieces[4];
-        return value;
-    }
 }
+    
