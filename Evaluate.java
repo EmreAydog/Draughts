@@ -75,109 +75,135 @@ public class Evaluate {
     int diagonal=0;
       for(int i = 0; i < whiteplace.size(); i++){
             if(whiteplace.get(i)==1){       //top left corner
-                if(pieces[i+1]==1){neighbours=neighbours+1;}
-                if(pieces[i+5]==1){neighbours=neighbours+1;}
-                if(pieces[i+6]==1){
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+6]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+11]==1){ 
+                    if(pieces[whiteplace.get(i)+11]==1){ 
                         diagonal=diagonal+1;
                     }                   
                 }
             }else if(whiteplace.get(i)==5){ //top right corner
-                if(pieces[i-1]==1){neighbours=neighbours+1;}
-                if(pieces[i+5]==1){
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+5]==1){
                     neighbours=neighbours+1;
                     if(pieces[i+9]==1){ 
                         diagonal=diagonal+1;
                     }
                 }
             }else if(whiteplace.get(i)==46){ //bottom left corner
-                if(pieces[i+1]==1){neighbours=neighbours+1;}
-                if(pieces[i-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
             }else if(whiteplace.get(i)==50){ //bottom right corner
-                if(pieces[i-1]==1){neighbours=neighbours+1;}
-                if(pieces[i-5]==1){neighbours=neighbours+1;}
-                if(pieces[i-6]==1){neighbours=neighbours+1;}
-            }else if(whiteplace.get(i)>=2 ||whiteplace.get(i)<=4){ //top row
-                if(pieces[i-1]==1){neighbours=neighbours+1;}
-                if(pieces[i+1]==1){neighbours=neighbours+1;}
-                if(pieces[i+5]==1){
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-6]==1){neighbours=neighbours+1;}
+            }else if(whiteplace.get(i)>=2 && whiteplace.get(i)<=4){ //top row
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+5]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+9]==1){
+                    if(pieces[whiteplace.get(i)+9]==1){
                         diagonal=diagonal+1;
                     }
                 }
-                if(pieces[i+6]==1){
+                if(pieces[whiteplace.get(i)+6]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+11]==1){
+                    if(pieces[whiteplace.get(i)+11]==1){
                         diagonal=diagonal+1;
                     }
                 }
-            }else if(whiteplace.get(i)>=2 ||whiteplace.get(i)<=4){ //bottom row
-                if(pieces[i-1]==1){neighbours=neighbours+1;}
-                if(pieces[i+1]==1){neighbours=neighbours+1;}
-                if(pieces[i-5]==1){neighbours=neighbours+1;}
-                if(pieces[i-6]==1){neighbours=neighbours+1;}
+            }else if(whiteplace.get(i)>=2 && whiteplace.get(i)<=4){ //bottom row
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-6]==1){neighbours=neighbours+1;}
             }else if(whiteplace.get(i)==6 || whiteplace.get(i)==16 || whiteplace.get(i)==26 || whiteplace.get(i)==36){ //most left colom
-                if(pieces[i+1]==1){neighbours=neighbours+1;}
-                if(pieces[i-5]==1){neighbours=neighbours+1;}
-                if(pieces[i+5]==1){
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+5]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+11]==1){
+                    if(pieces[whiteplace.get(i)+11]==1){
                         diagonal=diagonal+1;
                     }
                 }
-            }else if(whiteplace.get(i)==11 || whiteplace.get(i)==21 || whiteplace.get(i)==31 || whiteplace.get(i)==41){ //most left colom
-                if(pieces[i+1]==1){neighbours=neighbours+1;}
-                if(pieces[i-4]==1){neighbours=neighbours+1;}
-                if(pieces[i-5]==1){neighbours=neighbours+1;}
-                if(pieces[i+5]==1){neighbours=neighbours+1;}
-                if(pieces[i+6]==1){
+            }else if(whiteplace.get(i)==11 || whiteplace.get(i)==21 || whiteplace.get(i)==31 || whiteplace.get(i)==41){ //second most left colom
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-4]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+6]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+11]==1){
-                        diagonal=diagonal+1;
+                    if(whiteplace.get(i)!=41){
+                        if(pieces[whiteplace.get(i)+11]==1){
+                            diagonal=diagonal+1;
+                        }
                     }
                 }
             }else if(whiteplace.get(i)==15 || whiteplace.get(i)==25 || whiteplace.get(i)==35 || whiteplace.get(i)==45){ //most right colom
-                if(pieces[i-1]==1){neighbours=neighbours+1;}
-                if(pieces[i-5]==1){neighbours=neighbours+1;}
-                if(pieces[i+5]==1){
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+5]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+9]==1){
+                    if(whiteplace.get(i)!= 45){ 
+                        if(pieces[whiteplace.get(i)+9]==1){
+                            diagonal=diagonal+1;
+                        }
+                    }
+                }
+            }else if(whiteplace.get(i)==10 || whiteplace.get(i)==20 || whiteplace.get(i)==30 || whiteplace.get(i)==40){ //second most right colom
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-6]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+4]==1){
+                    neighbours=neighbours+1;
+                    if(pieces[whiteplace.get(i)+9]==1){
                         diagonal=diagonal+1;
                     }
                 }
-            }else if((whiteplace.get(i)>=12 && whiteplace.get(i)<=14) || (whiteplace.get(i)>=22 && whiteplace.get(i)<=24) || (whiteplace.get(i)>=32 && whiteplace.get(i)<=34) || (whiteplace.get(i)>=42 && whiteplace.get(i)<=44)){ //even rows
-                if(pieces[i-1]==1){neighbours=neighbours+1;}
-                if(pieces[i+1]==1){neighbours=neighbours+1;}
-                if(pieces[i-4]==1){neighbours=neighbours+1;}
-                if(pieces[i-5]==1){neighbours=neighbours+1;}
-                if(pieces[i+5]==1){
+            }else if((whiteplace.get(i)>=12 && whiteplace.get(i)<=14) || (whiteplace.get(i)>=22 && whiteplace.get(i)<=24) || (whiteplace.get(i)>=32 && whiteplace.get(i)<=34)){ //even rows
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-4]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+5]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+9]==1){
+                    if(pieces[whiteplace.get(i)+9]==1){
                         diagonal=diagonal+1;
                     }
                 }
-                if(pieces[i+6]==1){
+                if(pieces[whiteplace.get(i)+6]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+11]==1){
+                    if(pieces[whiteplace.get(i)+11]==1){
                         diagonal=diagonal+1;
                     }
                 }
+            }else if(whiteplace.get(i)>=42 && whiteplace.get(i)<=44 ){ //second last row
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-4]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+6]==1){neighbours=neighbours+1;}
+            }else if(whiteplace.get(i)>=47 && whiteplace.get(i)<=49 ){ // last row
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-4]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
              }else{ //unevenrows
-                if(pieces[i-1]==1){neighbours=neighbours+1;}
-                if(pieces[i+1]==1){neighbours=neighbours+1;}
-                if(pieces[i-5]==1){neighbours=neighbours+1;}
-                if(pieces[i-6]==1){neighbours=neighbours+1;}
-                if(pieces[i+4]==1){
+                if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-5]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)-6]==1){neighbours=neighbours+1;}
+                if(pieces[whiteplace.get(i)+4]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+9]==1){
+                    if(pieces[whiteplace.get(i)+9]==1){
                         diagonal=diagonal+1;
                     }
                 }
-                if(pieces[i+5]==1){
+                if(pieces[whiteplace.get(i)+5]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+11]==1){
+                    if(pieces[whiteplace.get(i)+11]==1){
                         diagonal=diagonal+1;
                     }
                 }     

@@ -131,7 +131,7 @@ public class FrEmPlayer  extends DraughtsPlayer{
          * the GameState and return its associated value.
          */
         if (depth <= 0 || state.isEndState()) {
-            return evaluate(state);
+            return Evaluate.evaluate(state);
         }
         
         for (Move move : state.getMoves()) {
@@ -178,7 +178,7 @@ public class FrEmPlayer  extends DraughtsPlayer{
          * the GameState and return its associated value.
          */
         if (depth <= 0 || state.isEndState()) {
-            return evaluate(state);
+            return Evaluate.evaluate(state);
         }
         
         for (Move move: state.getMoves()) {
@@ -210,7 +210,4 @@ public class FrEmPlayer  extends DraughtsPlayer{
         return alpha;
     }
 
-    /** A method that evaluates the given state. */
-    // ToDo: write an appropriate evaluation function
-    int evaluate(DraughtsState state) { return 0; }
 }
