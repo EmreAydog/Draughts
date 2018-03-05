@@ -87,6 +87,12 @@ public class FrEmPlayer  extends DraughtsPlayer{
     int alphaBeta(DraughtsNode node, int alpha, int beta, int depth)
             throws AIStoppedException
     {
+        // if the stop method has been called, invoke this if-statement
+        if (stopped) {
+            stopped = false;
+            throw new AIStoppedException();
+        }
+        
         if (node.getState().isWhiteToMove()) {
             
             // Maximizing player, hence we call alphaBetaMax in this loop
@@ -119,6 +125,7 @@ public class FrEmPlayer  extends DraughtsPlayer{
      int alphaBetaMin(DraughtsNode node, int alpha, int beta, int depth)
             throws AIStoppedException {
          
+        // if the stop method has been called, invoke this if-statement
         if (stopped) { 
             stopped = false; 
             throw new AIStoppedException(); 
@@ -166,6 +173,7 @@ public class FrEmPlayer  extends DraughtsPlayer{
     int alphaBetaMax(DraughtsNode node, int alpha, int beta, int depth)
             throws AIStoppedException {
         
+        // if the stop method has been called, invoke this if-statement
         if (stopped) { 
             stopped = false; 
             throw new AIStoppedException(); 
