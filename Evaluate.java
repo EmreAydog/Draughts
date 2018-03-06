@@ -71,8 +71,10 @@ public class Evaluate {
     //points are awarded for having more neighbours and for making diagonal lines of at leat 3 pieces
     static void formations(int[] pieces){
     int neighbours=0;
+    int bneighbours=0;
     int diagonal=0;
-      for(int i = 0; i < whiteplace.size(); i++){
+        for(int i = 0; i < whiteplace.size(); i++){
+            System.out.println(i);
             if(whiteplace.get(i)==1){       //top left corner
                 if(pieces[whiteplace.get(i)+1]==1){neighbours=neighbours+1;}
                 if(pieces[whiteplace.get(i)+5]==1){neighbours=neighbours+1;}
@@ -86,7 +88,7 @@ public class Evaluate {
                 if(pieces[whiteplace.get(i)-1]==1){neighbours=neighbours+1;}
                 if(pieces[whiteplace.get(i)+5]==1){
                     neighbours=neighbours+1;
-                    if(pieces[i+9]==1){ 
+                    if(pieces[whiteplace.get(i)+9]==1){ 
                         diagonal=diagonal+1;
                     }
                 }
@@ -209,66 +211,67 @@ public class Evaluate {
              }
           }
       for(int i = 0; i < blackplace.size(); i++){
+          System.out.println(i);
             if(blackplace.get(i)==1){       //top left corner
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+5]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+5]==1){bneighbours=bneighbours+1;}
                 if(pieces[blackplace.get(i)+6]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(pieces[blackplace.get(i)+11]==1){ 
                         diagonal=diagonal-1;
                     }                   
                 }
             }else if(blackplace.get(i)==5){ //top right corner
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
                 if(pieces[blackplace.get(i)+5]==1){
-                    neighbours=neighbours-1;
-                    if(pieces[i+9]==1){ 
+                    bneighbours=bneighbours+1;
+                    if(pieces[whiteplace.get(i)+9]==1){ 
                         diagonal=diagonal-1;
                     }
                 }
             }else if(blackplace.get(i)==46){ //bottom left corner
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
             }else if(blackplace.get(i)==50){ //bottom right corner
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-6]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-6]==1){bneighbours=bneighbours+1;}
             }else if(blackplace.get(i)>=2 && blackplace.get(i)<=4){ //top row
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
                 if(pieces[blackplace.get(i)+5]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(pieces[blackplace.get(i)+9]==1){
                         diagonal=diagonal-1;
                     }
                 }
                 if(pieces[blackplace.get(i)+6]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(pieces[blackplace.get(i)+11]==1){
                         diagonal=diagonal-1;
                     }
                 }
             }else if(blackplace.get(i)>=2 && blackplace.get(i)<=4){ //bottom row
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-6]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-6]==1){bneighbours=bneighbours+1;}
             }else if(blackplace.get(i)==6 || blackplace.get(i)==16 || blackplace.get(i)==26 || blackplace.get(i)==36){ //most left colom
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
                 if(pieces[blackplace.get(i)+5]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(pieces[blackplace.get(i)+11]==1){
                         diagonal=diagonal-1;
                     }
                 }
             }else if(blackplace.get(i)==11 || blackplace.get(i)==21 || blackplace.get(i)==31 || blackplace.get(i)==41){ //second most left colom
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-4]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+5]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-4]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+5]==1){bneighbours=bneighbours+1;}
                 if(pieces[blackplace.get(i)+6]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(blackplace.get(i)!=41){
                         if(pieces[blackplace.get(i)+11]==1){
                             diagonal=diagonal-1;
@@ -276,10 +279,10 @@ public class Evaluate {
                     }
                 }
             }else if(blackplace.get(i)==15 || blackplace.get(i)==25 || blackplace.get(i)==35 || blackplace.get(i)==45){ //most right colom
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
                 if(pieces[blackplace.get(i)+5]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(blackplace.get(i)!= 45){ 
                         if(pieces[blackplace.get(i)+9]==1){
                             diagonal=diagonal-1;
@@ -287,64 +290,64 @@ public class Evaluate {
                     }
                 }
             }else if(blackplace.get(i)==10 || blackplace.get(i)==20 || blackplace.get(i)==30 || blackplace.get(i)==40){ //second most right colom
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-6]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-6]==1){bneighbours=bneighbours+1;}
                 if(pieces[blackplace.get(i)+4]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(pieces[blackplace.get(i)+9]==1){
                         diagonal=diagonal-1;
                     }
                 }
             }else if((blackplace.get(i)>=12 && blackplace.get(i)<=14) || (blackplace.get(i)>=22 && blackplace.get(i)<=24) || (blackplace.get(i)>=32 && blackplace.get(i)<=34)){ //even rows
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-4]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-4]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
                 if(pieces[blackplace.get(i)+5]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(pieces[blackplace.get(i)+9]==1){
                         diagonal=diagonal-1;
                     }
                 }
                 if(pieces[blackplace.get(i)+6]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(pieces[blackplace.get(i)+11]==1){
                         diagonal=diagonal-1;
                     }
                 }
             }else if(blackplace.get(i)>=42 && blackplace.get(i)<=44 ){ //second last row
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-4]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+5]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+6]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-4]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+5]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+6]==1){bneighbours=bneighbours+1;}
             }else if(blackplace.get(i)>=47 && blackplace.get(i)<=49 ){ // last row
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-4]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-4]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
              }else{ //unevenrows
-                if(pieces[blackplace.get(i)-1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)+1]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-5]==1){neighbours=neighbours-1;}
-                if(pieces[blackplace.get(i)-6]==1){neighbours=neighbours-1;}
+                if(pieces[blackplace.get(i)-1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)+1]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-5]==1){bneighbours=bneighbours+1;}
+                if(pieces[blackplace.get(i)-6]==1){bneighbours=bneighbours+1;}
                 if(pieces[blackplace.get(i)+4]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(pieces[blackplace.get(i)+9]==1){
                         diagonal=diagonal-1;
                     }
                 }
                 if(pieces[blackplace.get(i)+5]==1){
-                    neighbours=neighbours-1;
+                    bneighbours=bneighbours+1;
                     if(pieces[blackplace.get(i)+11]==1){
                         diagonal=diagonal-1;
                     }
                 }     
              }
           }
-      neighbours=neighbours/2;
+      neighbours=neighbours-bneighbours/2;
       value= value+neighbours*neighboursworth+diagonal*diagonalworth;
     }
     
@@ -385,6 +388,7 @@ public class Evaluate {
                 blackplace.add(i);
             }
         }
+        
         center();
         balance();
         formations(pieces);
