@@ -30,5 +30,7 @@ public class MeanSubtraction implements DataTransform {
     @Override public void transform (List<TensorPair> data) {
         // TODO
     }
-            
+    
+          
 }
+

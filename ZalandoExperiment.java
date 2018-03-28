@@ -11,6 +11,7 @@ import nl.tue.s2id90.dl.NN.optimizer.Optimizer;
 import nl.tue.s2id90.dl.NN.optimizer.SGD;
 import nl.tue.s2id90.dl.NN.tensor.Tensor;
 import nl.tue.s2id90.dl.NN.tensor.TensorShape;
+import nl.tue.s2id90.dl.NN.transform.DataTransform;
 import nl.tue.s2id90.dl.NN.validate.Classification;
 import nl.tue.s2id90.dl.experiment.Experiment;
 import nl.tue.s2id90.dl.input.InputReader;
@@ -78,14 +79,12 @@ public class ZalandoExperiment extends Experiment {
 
         trainModel(model, reader, sgd, epochs, 0);  
         
-        MeanSubtraction dt = new MeanSubtraction();
+        DataTransform dt = new MeanSubtraction();
         
-        // not yet functional
-        /*
-        dt.fit(myTrainingData);
-        dt.transform(myTrainingData);
-        dt.transform(myValidationData);
-        */
+        dt.fit(reader.getTrainingData());
+        dt.transform(reader.getTrainingData());
+        dt.transform(reader.getValidationData());
+        
     }
     
 
