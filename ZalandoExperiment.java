@@ -26,9 +26,9 @@ import org.nd4j.linalg.api.ndarray.INDArray;
  */
 public class ZalandoExperiment extends Experiment {
     //hyper parameters
-    int batchSize = 32; 
+    int batchSize = 80; 
     int epochs = 5;
-    float learningRate = 0.01f;
+    float learningRate = 0.07f;
     
     String[] labels = {
         "T-shirt/Top", "Trouser", "Pullover", "Dress", "Coat", "Sandal",
@@ -62,14 +62,18 @@ public class ZalandoExperiment extends Experiment {
         
         int inputs = reader.getInputShape().getNeuronCount();
         int outputs = reader.getOutputShape().getNeuronCount();
-        
         // debug
         //System.out.println("Retrieved inputs: " + inputs);
         //System.out.println("Retrieved outputs: " + outputs);
+        // DataTransform dt = new MeanSubtraction();
+        
+        //dt.fit(reader.getTrainingData());
+        //dt.transform(reader.getTrainingData());
+        //dt.transform(reader.getValidationData());
         
         Model model = createModel(inputs, outputs);
         model.initialize(new Gaussian());
-
+        
         Optimizer sgd = SGD.builder()
                 .model(model)
                 .learningRate(learningRate)
@@ -77,13 +81,9 @@ public class ZalandoExperiment extends Experiment {
                 .build();
         
 
-        trainModel(model, reader, sgd, epochs, 0);  
+       trainModel(model, reader, sgd, epochs, 0);  
         
-        DataTransform dt = new MeanSubtraction();
-        
-        dt.fit(reader.getTrainingData());
-        dt.transform(reader.getTrainingData());
-        dt.transform(reader.getValidationData());
+      
         
     }
     
